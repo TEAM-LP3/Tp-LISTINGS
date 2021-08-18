@@ -73,11 +73,11 @@ int main(int argc, char const *argv[])
     
     /* Se imprimen los valores de las variables antes de invocar a la funcion*/
     printf("\n Valores iniciales \n"); 
-    printf("Valor inicial de la cuenta from_acc: %f.2 \n",account_balances[cuentas.from_acc]);
-    printf("Valor inicial de la cuenta to_acc: %f.2\n",account_balances[cuentas.to_acc]);
+    printf("Valor inicial de la cuenta from_acc: %.2f \n",account_balances[cuentas.from_acc]);
+    printf("Valor inicial de la cuenta to_acc: %.2f\n",account_balances[cuentas.to_acc]);
     
     /*creamos el hilo*/
- 
+    printf("Se crea el hilo");
     pthread_create(&hilo,NULL,&process_transaction,&cuentas);
 
     /*tratamos de cancelar el hilo*/
@@ -89,19 +89,18 @@ int main(int argc, char const *argv[])
     /* se espera a que el hilo termine y se almacena su estado de salida 
        usando la pthread_join que toma 2 argumentos, id del hilo y puntero nulo (void *) */ 
 
-    void * nulo; 
     int estado_final=0;
-    estado_final=pthread_join(hilo,nulo);
+    pthread_join(hilo,(void *)&estado_final);
 
-    printf("Comprobando estado final del hilo/n  EXITO =0 , FALLO != 0 \n ");
+    printf("Comprobando estado final del hilo : EXITO =0 , FALLO != 0 \n ");
     if(estado_final==0)
-      printf("EXITO");
+      printf("\nLA TRANSACCION FUE EXITOSA\n");
     else
-      printf("FALLO");  
+      printf("\n LA TRANSACCION FALLO\n");  
 
-    printf("Valores finales de las cuentas luego de la transaccion\n");
-    printf("Valor final de from_acc: %f.2\n",account_balances[cuentas.from_acc]);
-    printf("Valor final de to_acc: %f.2\n",account_balances[cuentas.to_acc]);
+    printf("\nValores finales de las cuentas luego de la transaccion\n");
+    printf("Valor final de from_acc: %.2f\n",account_balances[cuentas.from_acc]);
+    printf("Valor final de to_acc: %.2f\n",account_balances[cuentas.to_acc]);
 
     return 0;
 }
