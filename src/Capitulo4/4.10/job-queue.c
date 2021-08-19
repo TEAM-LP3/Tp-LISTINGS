@@ -51,7 +51,7 @@ void insert_jobs(){
       //se asigna memoria a la variable p_job 
       struct job *p_job =(struct job *)malloc(sizeof(struct job));
       p_job->next=NULL;
-      p_job->k=1;
+      p_job->k=j;
       p_job->next=job_queue;
       job_queue=p_job;
 
