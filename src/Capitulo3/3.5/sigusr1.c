@@ -14,7 +14,7 @@ int main()
     memset(&sa, 0, sizeof(sa));
     sa.sa_handler = &handler;
     sigaction(SIGUSR1, &sa, NULL);
-    /* Do some lengthy stuff here. */
+    /* Hace algunas cosas largas aqui. */
     /* ... */
 
     for (int i = 0; i < 100000; i++)
