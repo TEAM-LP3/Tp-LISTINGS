@@ -20,9 +20,11 @@ void *compute_prime(void *arg)
         /* ¿Este es el número primo que estamos buscando? */
         if (is_prime)
         {
-            if (--n == 0)
+            if (--n == 0){
+                void *p=&candidate;
                 /* Devuelve el número primo deseado como valor de retorno del hilo. */
-                return (void *)candidate;
+                return p;
+            }    
         }
         ++candidate;
     }
