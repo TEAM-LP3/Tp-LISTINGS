@@ -11,3 +11,7 @@ int main(int argc, char **argv)
     TIFFClose(tiff);
     return 0;
 }
+
+/*
+Necesario instalar sudo apt-get install libtiff4-dev
+*/
