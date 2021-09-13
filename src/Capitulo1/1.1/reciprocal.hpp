@@ -1,9 +1,8 @@
 #ifdef __cplusplus
-extern "C" {
+extern "C"
+{
 #endif
-
-extern double reciprocal (int i);
-
+    extern double reciprocal(int i);
 #ifdef __cplusplus
 }
 #endif
